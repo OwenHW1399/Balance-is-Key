@@ -12,11 +12,15 @@ public class Rolling : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        // rb.angularVelocity= Vector3()
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameObject.transform.hasChanged)
+        {
+            
+        }
     }
 }

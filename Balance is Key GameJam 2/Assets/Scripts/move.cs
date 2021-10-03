@@ -4,30 +4,27 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
-    private Rigidbody[] childRbs;
-    private GameObject[] arms;
-    private float _userVerticalInput, _userHorizontalInput;
-    public string player;
+    private Rigidbody rb;
 
-    private float speed = 0.01f;
+    public float thrust = 600f;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log(transform.Find("Arms"));
-        childRbs = GetComponentsInChildren<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        _userVerticalInput = Input.GetAxis(player + "Vertical");
-        _userHorizontalInput = Input.GetAxis(player + "Horizontal");
-
-        foreach(Rigidbody rb in childRbs)
-        {
-            gameObject.GetComponent<Transform>().position += transform.forward * _userVerticalInput * speed;
-            gameObject.GetComponent<Transform>().position += transform.right * _userHorizontalInput * speed;
-        }
+        if (Input.GetKey(KeyCode.W))
+            rb.AddForce(transform.forward * thrust);
+        if (Input.GetKey(KeyCode.A))
+            rb.AddForce(transform.right * -thrust);
+        if (Input.GetKey(KeyCode.S))
+            rb.AddForce(transform.forward * -thrust);
+        if (Input.GetKey(KeyCode.D))
+            rb.AddForce(transform.right * thrust);
         
     }
 }
