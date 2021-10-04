@@ -14,14 +14,22 @@ public class RigidbodyController : MonoBehaviour
 
     private string _hAxis;
     private string _vAxis;
-    private Rigidbody rb;
-
+    private Rigidbody _rb;
+    private Rigidbody _platform;
+    private LineRenderer[] _lines;
+    private SpringJoint[] _springs;
+    
     private Vector3 _input = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
+        _springs = GetComponents<SpringJoint>();
+        _lines = transform.parent.GetComponentsInChildren<LineRenderer>();
+        print(_lines.Length);
+        _platform = _springs[0].connectedBody;
+        
         _hAxis = "p" + player + "Horizontal";
         _vAxis = "p" + player + "Vertical";
     }
@@ -31,11 +39,17 @@ public class RigidbodyController : MonoBehaviour
         _input = Vector3.zero;
         _input.x = Input.GetAxis(_hAxis);
         _input.z = Input.GetAxis(_vAxis);
+
+        for (int i = 0; i < _lines.Length; i++)
+        {
+            Vector3[] pos = {_springs[i].anchor, _springs[i].connectedAnchor};
+            _lines[i].SetPositions(pos);
+        }
     }
 
     // FixedUpdate is not affected by framerate, it is called at a fixed time interval so may be called 0, 1, or more times per depending on the current framerate
     void FixedUpdate()
     {
-        rb.AddForce(_input * Acceleration, ForceMode.Force); // adjust the net force vector every frame by adding a force in the direction of the user input
+        _rb.AddForce(_input * Acceleration, ForceMode.Force); // adjust the net force vector every frame by adding a force in the direction of the user input
     }
 }
