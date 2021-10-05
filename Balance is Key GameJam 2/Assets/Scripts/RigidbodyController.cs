@@ -40,7 +40,12 @@ public class RigidbodyController : MonoBehaviour
         _input.x = Input.GetAxis(_hAxis);
         _input.z = Input.GetAxis(_vAxis);
 
-        for (int i = 0; i < _lines.Length; i++)
+        if (player == 1)
+            _input.y = Input.GetAxis("leftTrigger");
+        else if (player == 2)
+            _input.y = Input.GetAxis("rightTrigger");
+
+    for (int i = 0; i < _lines.Length; i++)
         {
             Vector3[] pos = {_springs[i].anchor, _springs[i].connectedAnchor};
             _lines[i].SetPositions(pos);
