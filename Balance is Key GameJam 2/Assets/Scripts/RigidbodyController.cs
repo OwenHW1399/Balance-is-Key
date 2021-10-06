@@ -28,10 +28,10 @@ public class RigidbodyController : MonoBehaviour
         _vAxis = "p" + player + "Vertical";
         
         _rb = GetComponent<Rigidbody>();
-        _springs = GetComponents<SpringJoint>();
-        _lines = transform.parent.GetComponentsInChildren<LineRenderer>();
-        print(_lines.Length);
-        _platform = _springs[0].connectedBody;
+        // _springs = GetComponents<SpringJoint>();
+        // _lines = transform.parent.GetComponentsInChildren<LineRenderer>();
+        // print(_lines.Length);
+        // _platform = _springs[0].connectedBody;
     }
 
     void Update()
@@ -40,16 +40,16 @@ public class RigidbodyController : MonoBehaviour
         _input.x = Input.GetAxis(_hAxis);
         _input.z = Input.GetAxis(_vAxis);
 
-        if (player == 1)
-            _input.y = Input.GetAxis("leftTrigger");
-        else if (player == 2)
-            _input.y = Input.GetAxis("rightTrigger");
+        // if (player == 1)
+        //     _input.y = Input.GetAxis("leftTrigger");
+        // else if (player == 2)
+        //     _input.y = Input.GetAxis("rightTrigger");
 
-        for (int i = 0; i < _lines.Length; i++)
-        {
-            Vector3[] pos = {_springs[i].anchor, _springs[i].connectedAnchor};
-            _lines[i].SetPositions(pos);
-        }
+        // for (int i = 0; i < _lines.Length; i++)
+        // {
+        //     Vector3[] pos = {_springs[i].anchor, _springs[i].connectedAnchor};
+        //     _lines[i].SetPositions(pos);
+        // }
     }
 
     // FixedUpdate is not affected by framerate, it is called at a fixed time interval so may be called 0, 1, or more times per depending on the current framerate
