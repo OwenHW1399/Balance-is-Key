@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - CameraController
     - PlayerController
     - RigidbodyController
     Unity.Rider.Editor.dll:
@@ -11,7 +12,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
   sceneClasses:
-    Assets/Scenes/Test.unity:
+    Assets/Scenes/level_test.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -48,6 +49,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 1928}
     - Class: 114
       Script: {instanceID: 2394}
+    - Class: 114
+      Script: {instanceID: 16984}
+    - Class: 114
+      Script: {instanceID: 23742}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
@@ -59,6 +64,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -505,7 +512,14 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: eb8e2fc530fe76a0ae2020c6388c470a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraController
   platform: 19
   scenePathNames:
-  - Assets/Scenes/Test.unity
-  playerPath: D:/Stuff/UofT/CSC404/Builds/October 13/Balance is Key GameJam 2.exe
+  - Assets/Scenes/level_test.unity
+  playerPath: E:/docs/csc404/game jam/Balance-GameJam/Balance is Key GameJam 2/build/Balance
+    is Key GameJam 2.exe

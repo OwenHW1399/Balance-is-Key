@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -37,9 +38,7 @@ public class PlayerController : MonoBehaviour
         _bodyRb = GetComponent<Rigidbody>();
         _handRbL = GetComponentsInChildren<Rigidbody>()[1];
         _handRbR = GetComponentsInChildren<Rigidbody>()[2];
-        print(_bodyRb);
-        print(_handRbL);
-        print(_handRbR);
+        
         
         
 
@@ -81,5 +80,10 @@ public class PlayerController : MonoBehaviour
         _input.x = Input.GetAxis(_movementHorzAxis);
         _input.z = Input.GetAxis(_movementVertAxis);
         // TODO: move trigger inputs from FixedUpdate to Update? 
+
+        if(Input.GetKeyDown("space"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
